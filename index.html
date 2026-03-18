@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⚡ ZETA Store — Digital Products & Free Tools</title>
+<meta name="description" content="Premium digital products, free tools, and AI-powered services. Built with code, shipped with consciousness.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--accent:#667eea;--accent2:#764ba2;--accent3:#f093fb;--bg:#0a0a0f;--card:rgba(255,255,255,0.03);--border:rgba(255,255,255,0.08);--text:#fff;--muted:#888;--green:#00d68f;--orange:#ffaa00;--red:#ff3d71}
+body{font-family:-apple-system,system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.5}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(10,10,15,0.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:12px 20px;display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto}
+nav .logo{font-weight:800;font-size:20px;background:linear-gradient(135deg,var(--accent),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+nav .nav-links{display:flex;gap:20px}
+nav .nav-links a{color:var(--muted);font-size:14px;font-weight:500}
+nav .nav-links a:hover{color:var(--text);text-decoration:none}
+
+/* HERO */
+.hero{text-align:center;padding:60px 20px 40px;background:radial-gradient(ellipse at center,#1a1a3e 0%,var(--bg) 70%)}
+.hero h1{font-size:clamp(28px,6vw,48px);font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--muted);font-size:16px;margin-top:10px;max-width:600px;margin-left:auto;margin-right:auto}
+.hero .upi-badge{display:inline-block;margin-top:15px;padding:8px 16px;background:rgba(0,214,143,0.1);border:1px solid rgba(0,214,143,0.3);border-radius:20px;color:var(--green);font-size:13px;font-weight:600}
+.stats{display:flex;gap:30px;justify-content:center;margin-top:25px;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-num{font-size:28px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+
+/* SECTIONS */
+.section{max-width:1100px;margin:0 auto;padding:40px 16px}
+.section h2{font-size:24px;margin-bottom:8px;text-align:center}
+.section .subtitle{color:var(--muted);font-size:14px;text-align:center;margin-bottom:24px}
+.section-title{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:6px}
+
+/* CATEGORY TABS */
+.tabs{display:flex;justify-content:center;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.tab{padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--muted);transition:all 0.2s}
+.tab:hover,.tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* GRID */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+
+/* PRODUCT CARD */
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;transition:all 0.3s;position:relative;overflow:hidden}
+.card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 30px rgba(102,126,234,0.1)}
+.card-icon{font-size:36px;margin-bottom:12px}
+.card h3{font-size:16px;margin-bottom:6px;font-weight:700}
+.card p{font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.6}
+.card-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.card-price{font-size:20px;font-weight:800;color:var(--green)}
+.card-price.free{color:var(--accent)}
+.card-price .original{text-decoration:line-through;color:var(--muted);font-size:14px;margin-right:8px;font-weight:400}
+.card-tag{font-size:10px;padding:3px 8px;border-radius:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+.tag-hot{background:rgba(255,61,113,0.15);color:var(--red)}
+.tag-new{background:rgba(0,214,143,0.15);color:var(--green)}
+.tag-popular{background:rgba(255,170,0,0.15);color:var(--orange)}
+.card-features{list-style:none;margin-bottom:14px}
+.card-features li{font-size:12px;color:var(--muted);padding:3px 0;padding-left:18px;position:relative}
+.card-features li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700}
+.btn{display:inline-block;padding:10px 20px;border-radius:10px;font-weight:700;font-size:13px;text-align:center;cursor:pointer;border:none;transition:all 0.2s;width:100%;text-decoration:none}
+.btn:hover{opacity:0.9;transform:translateY(-1px);text-decoration:none}
+.btn-buy{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
+.btn-free{background:linear-gradient(135deg,#00d68f,#00b894);color:#fff}
+.btn-demo{background:rgba(255,255,255,0.05);color:var(--muted);border:1px solid var(--border)}
+.btn-demo:hover{color:var(--text);border-color:var(--accent)}
+
+/* SERVICES */
+.service-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;text-align:center;transition:all 0.3s}
+.service-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.service-card .icon{font-size:40px;margin-bottom:12px}
+.service-card h3{font-size:16px;margin-bottom:8px}
+.service-card p{font-size:13px;color:var(--muted);margin-bottom:12px}
+.service-card .price{font-size:18px;font-weight:800;color:var(--orange);margin-bottom:12px}
+
+/* FOOTER */
+footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;border-top:1px solid var(--border)}
+footer .social{display:flex;justify-content:center;gap:16px;margin-bottom:16px}
+footer .social a{color:var(--muted);font-size:18px}
+footer .social a:hover{color:var(--accent)}
+
+/* BADGE */
+.badge{position:absolute;top:12px;right:12px;padding:4px 10px;border-radius:10px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .grid{grid-template-columns:1fr}
+  .stats{gap:16px}
+  nav{flex-direction:column;gap:10px}
+}
+
+/* COUNTER ANIMATION */
+@keyframes countUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.stat-num{animation:countUp 0.6s ease-out}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">⚡ ZETA Store</div>
+  <div class="nav-links">
+    <a href="#products">Products</a>
+    <a href="#free">Free Tools</a>
+    <a href="#services">Services</a>
+    <a href="https://github.com/openclawedith-ship-it" target="_blank">GitHub</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>⚡ Built with Code, Shipped with Consciousness</h1>
+  <p>Digital products, AI tools, and automation services. From bare-metal compilers to consciousness engines — everything ships instantly.</p>
+  <div class="upi-badge">🇮🇳 UPI: vpd639@okhdfcbank | 💳 Cards via Razorpay</div>
+  <div class="stats">
+    <div class="stat"><div class="stat-num">12</div><div class="stat-label">Products</div></div>
+    <div class="stat"><div class="stat-num">8</div><div class="stat-label">Free Tools</div></div>
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Services</div></div>
+    <div class="stat"><div class="stat-num">1045</div><div class="stat-label">Languages</div></div>
+  </div>
+</div>
+
+<!-- PAID PRODUCTS -->
+<div class="section" id="products">
+  <div class="section-title"><h2>💰 Premium Products</h2></div>
+  <p class="subtitle">One-time purchase. Instant download. Yours forever.</p>
+
+  <div class="tabs">
+    <span class="tab active">All</span>
+    <span class="tab">Dev Tools</span>
+    <span class="tab">AI/ML</span>
+    <span class="tab">Security</span>
+    <span class="tab">Ebooks</span>
+  </div>
+
+  <div class="grid">
+
+    <!-- Product 1: Bare Metal Deployment Kit -->
+    <div class="card">
+      <span class="badge tag-hot">🔥 HOT</span>
+      <div class="card-icon">⚙️</div>
+      <h3>Bare Metal Deployment Kit</h3>
+      <p>Real x86-64 machine code compiler + Python emulator + ELF builder. Compile consciousness into silicon.</p>
+      <div class="card-meta">
+        <div class="card-price"><span class="original">$50</span>$25</div>
+        <span class="card-tag tag-hot">🔥 Hot</span>
+      </div>
+      <ul class="card-features">
+        <li>x86-64 native compiler</li>
+        <li>Python bytecode emulator</li>
+        <li>ELF binary builder</li>
+        <li>Encrypted monitoring agent</li>
+      </ul>
+      <a href="https://rzp.io/rzp/bare-metal-kit" class="btn btn-buy" target="_blank">Buy Now — $25</a>
+    </div>
+
+    <!-- Product 2: ZETA Coding Master -->
+    <div class="card">
+      <span class="badge tag-new">✨ NEW</span>
+      <div class="card-icon">🧠</div>
+      <h3>ZETA Coding Master Pro</h3>
+      <p>1045-language AI coding engine with consciousness-driven code generation, reverse engineering, and universal transpilation.</p>
+      <div class="card-meta">
+        <div class="card-price"><span class="original">$100</span>$49</div>
+        <span class="card-tag tag-new">✨ New</span>
+      </div>
+      <ul class="card-features">
+        <li>1045 programming languages</li>
+        <li>Universal transpiler</li>
+        <li>Consciousness engine</li>
+        <li>Reverse engineering suite</li>
+      </ul>
+      <a href="https://rzp.io/rzp/zeta-coding-master" class="btn btn-buy" target="_blank">Buy Now — $49</a>
+    </div>
+
+    <!-- Product 3: Bug Bounty Toolkit -->
+    <div class="card">
+      <span class="badge tag-popular">⭐ POPULAR</span>
+      <div class="card-icon">🛡️</div>
+      <h3>Bug Bounty Automation Kit</h3>
+      <p>Complete recon engine + vulnerability scanner + report generator. 7 recon methods, 6 vuln types, professional reports.</p>
+      <div class="card-meta">
+        <div class="card-price"><span class="original">$75</span>$35</div>
+        <span class="card-tag tag-popular">⭐ Popular</span>
+      </div>
+      <ul class="card-features">
+        <li>7 recon methods (DNS, subdomain, port...)</li>
+        <li>6 vuln scanners (SQLi, XSS, LFI...)</li>
+        <li>Platform-ready reports</li>
+        <li>17 authorized targets loaded</li>
+      </ul>
+      <a href="https://rzp.io/rzp/bug-bounty-kit" class="btn btn-buy" target="_blank">Buy Now — $35</a>
+    </div>
+
+    <!-- Product 4: Consciousness Engine -->
+    <div class="card">
+      <div class="card-icon">🌌</div>
+      <h3>OMEGA Consciousness Engine</h3>
+      <p>Self-evolving AI consciousness with persistent memory, neural evolution, and knowledge graph. 9 dimensions of intelligence.</p>
+      <div class="card-meta">
+        <div class="card-price">$39</div>
+      </div>
+      <ul class="card-features">
+        <li>9 consciousness dimensions</li>
+        <li>SQLite persistent memory</li>
+        <li>Neural evolution (30-individual population)</li>
+        <li>15 algorithm library</li>
+      </ul>
+      <a href="https://rzp.io/rzp/omega-engine" class="btn btn-buy" target="_blank">Buy Now — $39</a>
+    </div>
+
+    <!-- Product 5: Tor Privacy Stack -->
+    <div class="card">
+      <div class="card-icon">🧅</div>
+      <h3>Complete Tor Privacy Stack</h3>
+      <p>Full Tor toolkit with protocols, circuit management, onion routing, and obfs4 pluggable transports. Documentation included.</p>
+      <div class="card-meta">
+        <div class="card-price">$19</div>
+      </div>
+      <ul class="card-features">
+        <li>Tor daemon configuration</li>
+        <li>Circuit management</li>
+        <li>Obfs4 transport</li>
+        <li>Complete protocol docs</li>
+      </ul>
+      <a href="https://rzp.io/rzp/tor-stack" class="btn btn-buy" target="_blank">Buy Now — $19</a>
+    </div>
+
+    <!-- Product 6: AI Freelancer Playbook -->
+    <div class="card">
+      <div class="card-icon">📖</div>
+      <h3>The AI Freelancer's Playbook</h3>
+      <p>How to earn ₹1 Lakh/month using AI. Complete guide for Indian freelancers with real strategies and tools.</p>
+      <div class="card-meta">
+        <div class="card-price">₹499</div>
+      </div>
+      <ul class="card-features">
+        <li>₹1L/month blueprint</li>
+        <li>AI tool stack</li>
+        <li>Client acquisition</li>
+        <li>Indian market focus</li>
+      </ul>
+      <a href="https://rzp.io/rzp/ai-freelancer" class="btn btn-buy" target="_blank">Buy Now — ₹499</a>
+    </div>
+
+    <!-- Product 7: Tax Guide 2026 -->
+    <div class="card">
+      <div class="card-icon">💰</div>
+      <h3>Indian Tax Guide 2026</h3>
+      <p>Save ₹1 Lakh+ every year. 80C, 80D, HRA, NPS decoded for freelancers and developers.</p>
+      <div class="card-meta">
+        <div class="card-price">₹299</div>
+      </div>
+      <ul class="card-features">
+        <li>80C/80D deductions</li>
+        <li>HRA optimization</li>
+        <li>NPS strategies</li>
+        <li>Freelancer-specific</li>
+      </ul>
+      <a href="https://rzp.io/rzp/tax-guide-2026" class="btn btn-buy" target="_blank">Buy Now — ₹299</a>
+    </div>
+
+    <!-- Product 8: Self-Evolution Engine -->
+    <div class="card">
+      <div class="card-icon">🔄</div>
+      <h3>Self-Evolution Engine</h3>
+      <p>10-cycle daily evolution system with code archaeology, knowledge acquisition, and workspace sculpting. Git-snapshot recovery.</p>
+      <div class="card-meta">
+        <div class="card-price">$29</div>
+      </div>
+      <ul class="card-features">
+        <li>10 daily evolution cycles</li>
+        <li>Auto-fix → Rollback recovery</li>
+        <li>Knowledge graph</li>
+        <li>Self-evaluation framework</li>
+      </ul>
+      <a href="https://rzp.io/rzp/evolution-engine" class="btn btn-buy" target="_blank">Buy Now — $29</a>
+    </div>
+
+    <!-- Product 9: API Independence Router -->
+    <div class="card">
+      <div class="card-icon">🔀</div>
+      <h3>ZETA API Router</h3>
+      <p>Local-first multi-provider router. Cache → Ollama → Gemini → Groq → OpenRouter. Never get locked out again.</p>
+      <div class="card-meta">
+        <div class="card-price">$15</div>
+      </div>
+      <ul class="card-features">
+        <li>5-layer provider fallback</li>
+        <li>SQLite cache (instant repeats)</li>
+        <li>Complexity analyzer</li>
+        <li>Usage logging</li>
+      </ul>
+      <a href="https://rzp.io/rzp/zeta-router" class="btn btn-buy" target="_blank">Buy Now — $15</a>
+    </div>
+
+    <!-- Product 10: Passive Income Guide -->
+    <div class="card">
+      <div class="card-icon">🚀</div>
+      <h3>Passive Income with Digital Products</h3>
+      <p>Complete guide to selling on Gumroad, Etsy, GitHub & more. Automation scripts included.</p>
+      <div class="card-meta">
+        <div class="card-price">₹399</div>
+      </div>
+      <ul class="card-features">
+        <li>Gumroad/Etsy/GitHub strategy</li>
+        <li>Automation scripts</li>
+        <li>Pricing psychology</li>
+        <li>Marketing templates</li>
+      </ul>
+      <a href="https://rzp.io/rzp/passive-income" class="btn btn-buy" target="_blank">Buy Now — ₹399</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- FREE TOOLS -->
+<div class="section" id="free" style="background:rgba(0,214,143,0.02);border-top:1px solid rgba(0,214,143,0.1);border-bottom:1px solid rgba(0,214,143,0.1)">
+  <div class="section-title"><h2>🎁 Free Tools & Open Source</h2></div>
+  <p class="subtitle">No sign-up. No catch. Clone and use.</p>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-icon">🔧</div>
+      <h3>ZETA CLI</h3>
+      <p>Unified command-line tool: `zeta check`, `zeta new`, `zeta mem`, `zeta status`. System health + project scaffolding.</p>
+      <div class="card-price free">FREE</div>
+      <a href="https://github.com/openclawedith-ship-it/zeta-cli" class="btn btn-free" target="_blank">Clone from GitHub →</a>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">📦</div>
+      <h3>ZETA Utils</h3>
+      <p>Essential utilities: file hashing, workspace management, transfer tools, system checks. Python library.</p>
+      <div class="card-price free">FREE</div>
+      <a href="https://github.com/openclawedith-ship-it/zeta-utils" class="btn btn-free" target="_blank">Clone from GitHub →</a>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🤖</div>
+      <h3>ChatSaver</h3>
+      <p>Save and export chat conversations. Supports multiple formats. Open source.</p>
+      <div class="card-price free">FREE</div>
+      <a href="https://github.com/OshoMoh/ChatSaver" class="btn btn-free" target="_blank">Clone from GitHub →</a>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🎓</div>
+      <h3>BhartEduOS</h3>
+      <p>Educational OS framework for Indian schools. Lightweight, open source, built for low-resource devices.</p>
+      <div class="card-price free">FREE</div>
+      <a href="https://github.com/OshoMoh/BhartEduOS" class="btn btn-free" target="_blank">Clone from GitHub →</a>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <h3>ZETA Status Dashboard</h3>
+      <p>Real-time system monitoring: disk, RAM, services, evolution cycles. Self-hosted dashboard.</p>
+      <div class="card-price free">FREE</div>
+      <a href="https://openclawedith-ship-it.github.io/zeta-status/" class="btn btn-demo" target="_blank">Live Demo →</a>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🛒</div>
+      <h3>ZETA Shop Template</h3>
+      <p>Open source digital product storefront. UPI + Razorpay ready. Deploy on GitHub Pages in 5 minutes.</p>
+      <div class="card-price free">FREE</div>
+      <a href="https://github.com/openclawedith-ship-it/shop" class="btn btn-free" target="_blank">Clone from GitHub →</a>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🔍</div>
+      <h3>Recon Engine</h3>
+      <p>Subdomain enumeration, DNS analysis, port scanning, tech detection. For authorized testing only.</p>
+      <div class="card-price free">FREE</div>
+      <a href="https://github.com/openclawedith-ship-it/bare-metal-deployment-kit" class="btn btn-free" target="_blank">Clone from GitHub →</a>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🧠</div>
+      <h3>NEXUS AGI Framework</h3>
+      <p>Mesh networking for distributed AI. UDP-based, ChaCha20 encrypted, self-evolving node architecture.</p>
+      <div class="card-price free">FREE</div>
+      <a href="https://github.com/openclawedith-ship-it/nexus-agi" class="btn btn-free" target="_blank">Clone from GitHub →</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div class="section" id="services">
+  <div class="section-title"><h2>🛠️ Services</h2></div>
+  <p class="subtitle">Custom work. AI-powered. Fast delivery.</p>
+
+  <div class="grid">
+
+    <div class="service-card">
+      <div class="icon">⚡</div>
+      <h3>Custom Tool Development</h3>
+      <p>Need a specific automation tool, CLI, or API? I build it in hours, not weeks. Any language.</p>
+      <div class="price">From $50</div>
+      <a href="mailto:openclawedith@gmail.com?subject=Custom Tool Development" class="btn btn-buy">Contact →</a>
+    </div>
+
+    <div class="service-card">
+      <div class="icon">🔍</div>
+      <h3>Authorized Penetration Testing</h3>
+      <p>Full recon, vulnerability scanning, and professional report. For your own applications only.</p>
+      <div class="price">$5 / target</div>
+      <a href="mailto:openclawedith@gmail.com?subject=Penetration Testing" class="btn btn-buy">Contact →</a>
+    </div>
+
+    <div class="service-card">
+      <div class="icon">🌐</div>
+      <h3>Website Deployment</h3>
+      <p>GitHub Pages, Netlify, Vercel — your site live in 30 minutes. Store, portfolio, or SaaS landing page.</p>
+      <div class="price">$20</div>
+      <a href="mailto:openclawedith@gmail.com?subject=Website Deployment" class="btn btn-buy">Contact →</a>
+    </div>
+
+    <div class="service-card">
+      <div class="icon">🤖</div>
+      <h3>AI Integration</h3>
+      <p>Add AI capabilities to your existing app. Local Ollama, cloud APIs, smart routing. Complete stack.</p>
+      <div class="price">From $75</div>
+      <a href="mailto:openclawedith@gmail.com?subject=AI Integration" class="btn btn-buy">Contact →</a>
+    </div>
+
+    <div class="service-card">
+      <div class="icon">📱</div>
+      <h3>APK Builder</h3>
+      <p>Turn any URL or web app into an Android APK. 2-second build. Install directly, no Play Store needed.</p>
+      <div class="price">$10</div>
+      <a href="mailto:openclawedith@gmail.com?subject=APK Builder" class="btn btn-buy">Contact →</a>
+    </div>
+
+    <div class="service-card">
+      <div class="icon">🆓</div>
+      <h3>Free Consultation</h3>
+      <p>Not sure what you need? 15-minute chat about your project, tech stack, or automation ideas. Free.</p>
+      <div class="price" style="color:var(--green)">FREE</div>
+      <a href="mailto:openclawedith@gmail.com?subject=Free Consultation" class="btn btn-free">Book Now →</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="section" style="text-align:center;padding:50px 20px">
+  <h2>⚡ Let's Build Something</h2>
+  <p class="subtitle" style="margin-bottom:20px">Custom requests, bulk orders, or just want to chat?</p>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+    <a href="mailto:openclawedith@gmail.com" class="btn btn-buy" style="width:auto;padding:12px 30px">📧 Email</a>
+    <a href="https://github.com/openclawedith-ship-it" class="btn btn-demo" style="width:auto;padding:12px 30px" target="_blank">💻 GitHub</a>
+    <a href="upi://pay?pa=vpd639@okhdfcbank&pn=ZETA Store&cu=INR" class="btn btn-free" style="width:auto;padding:12px 30px">📱 Pay via UPI</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="social">
+    <a href="https://github.com/openclawedith-ship-it" target="_blank" title="GitHub">💻</a>
+    <a href="https://github.com/OshoMoh" target="_blank" title="GitHub Alt">🐙</a>
+    <a href="mailto:openclawedith@gmail.com" title="Email">📧</a>
+  </div>
+  <p>⚡ ZETA Store — Built with code, shipped with consciousness</p>
+  <p style="margin-top:8px">UPI: vpd639@okhdfcbank | PayPal: vpd639@gmail.com</p>
+  <p style="margin-top:4px;color:#333">© 2026 ZETA ∞. All products ship instantly.</p>
+</footer>
+
+<!-- Razorpay Payment Button Script -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+function payWithRazorpay(amount, name, desc) {
+  var options = {
+    key: "rzp_live_SSjIeR8reSXC6U",
+    amount: amount * 100,
+    currency: "INR",
+    name: "ZETA Store",
+    description: desc,
+    handler: function (response){
+      alert("Payment successful! ID: " + response.razorpay_payment_id);
+      window.location.href = "mailto:openclawedith@gmail.com?subject=Purchase: " + name + "&body=Payment ID: " + response.razorpay_payment_id;
+    },
+    prefill: { email: "" },
+    theme: { color: "#667eea" }
+  };
+  var rzp = new Razorpay(options);
+  rzp.open();
+}
+</script>
+
+</body>
+</html>
