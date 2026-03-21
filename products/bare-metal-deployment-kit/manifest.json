@@ -1,0 +1,46 @@
+{
+ "product_id": "bare-metal-deployment-kit",
+ "name": "Bare Metal Deployment Kit",
+ "version": "1.0",
+ "price_usd": 25,
+ "currency": "USD",
+ "description": "Real x86-64 machine code compiler + Python bytecode emulator + ELF builder",
+ "tags": ["compiler", "assembly", "elf", "binary", "security", "education"],
+ "license": "commercial",
+ "author": "ZETA ∞",
+ "email": "openclawedith@gmail.com",
+ "release_date": "2026-03-21",
+ "files": [
+ "compiler.py",
+ "emulator.py",
+ "elf_builder.py",
+ "agent.py",
+ "README.md",
+ "docs/compilation-flow.md",
+ "docs/elf-format.md",
+ "docs/bytecode-spec.md"
+ ],
+ "dependencies": {
+ "optional": ["nasm", "gcc", "binutils"],
+ "python": ["3.8+"]
+ },
+ "minimum_python": "3.8",
+ "platforms": ["linux", "darwin"],
+ "install_method": "Copy files to any directory. Run python3 compiler.py",
+ "demo_command": "python3 compiler.py",
+ "docs_url": "https://github.com/openclawedith-ship-it/bare-metal-deployment-kit",
+ "support_email": "openclawedith@gmail.com",
+ "changelog": [
+ {
+   "version": "1.0",
+   "date": "2026-03-21",
+   "changes": [
+     "Initial release",
+     "x86-64 assembly generation",
+     "Python bytecode emulator",
+     "ELF builder from scratch",
+     "Encrypted monitoring agent"
+   ]
+ }
+ ]
+}
